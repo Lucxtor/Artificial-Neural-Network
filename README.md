@@ -18,4 +18,4 @@ Alunos: Vinícius Clemente (21103915), Matheus Beilfuss (21104290) e Luis Felipe
   - [ ] Erro Quadrático;
   - [ ] Entropia Cruzada Binária;
   - [ ] Entropia Cruzada Categórica.
-- Back-propagation.
+- [ ] Back-propagation.
