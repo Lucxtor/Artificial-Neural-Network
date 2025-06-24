@@ -1,4 +1,6 @@
 import numpy as np
+from activation import activation_funcs
+from cost import cost_funcs
 
 class ANN:
     def __init__(self, numAttributes, numLayers):
@@ -6,7 +8,7 @@ class ANN:
       # número de dimensões de entrada
       self.numAttributes = numAttributes
 
-        # número de camadas
+      # número de camadas
       self.numLayers = numLayers
 
     # Método para o usuário escolher o número de neurônios e função de ativação de cada camada
@@ -62,21 +64,25 @@ class ANN:
       # Itera sobre cada camada da rede neural
       for i in range(self.numLayers):
           
-          # Calcula a saída da camada atual: z = w * a + b, onde w são os pesos, a é a ativação da camada anterior e b são os biases
-          z = np.dot(activation, self.weights[i]) + self.biases[i]
-          
-          # Aplica a função de ativação correspondente
-          if self.activationFunctions[i] == 'sigmoid':
-              activation = 1 / (1 + np.exp(-z))
-          elif self.activationFunctions[i] == 'relu':
-              activation = np.maximum(0, z)
-          elif self.activationFunctions[i] == 'softmax':
-              expZ = np.exp(z - np.max(z))
-              activation = expZ / np.sum(expZ, axis=1, keepdims=True)
+        # Calcula a saída da camada atual: z = w * a + b, onde w são os pesos, a é a ativação da camada anterior e b são os biases
+        z = np.dot(activation, self.weights[i]) + self.biases[i]
         
+        # Pega a função de ativação do dicionário activation_funcs
+        activation_func, _ = activation_funcs[self.activationFunctions[i]]
+        
+        # Calcula o resultado da função de ativação
+        activation = activation_func(z)
+
+      # Retorna o resultado do feedfoward (resultado da rede)
+      return activation
+
     # Calcula o custo (erro) entre as saídas da rede e os alvos
-    def cost(self):
-      pass
+    def cost(self, y_true, y_pred, cost_function_name):
+      # Pega a função de custo do dicionário cost_funcs
+      cost_func, _ = cost_funcs[cost_function_name]
+      
+      # Calcula e retorna o custo
+      return cost_func(y_true, y_pred)
     
     # Implementação do backpropagation para treinar a rede neural
     def backpropagation(self):
