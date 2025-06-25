@@ -14,6 +14,6 @@ X = data.iloc[:, :-1].values
 y = data.iloc[:, -1].values
 
 # Divisão dos dados em conjuntos de treino e teste na proporção de 80% para treino e 20% para teste
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
 
 # Ainda é necessário adicionar o bias, mas isso na inicialização da rede neural, e talvez seja necessário normalizar os dados
