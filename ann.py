@@ -16,9 +16,12 @@ def initialize_layers(layers, c_inputs):
       input_size = layers[i - 1]['neurons']
     # o número de saídas é igual ao número de neurônios da camada atual
     output_size = layer['neurons']
+    
     # Inicializa os pesos com valores aleatórios pequenos e os biases com zeros
-    weight_matrix = np.random.rand(input_size, output_size) * 0.01
-    bias_vector = np.zeros((1, output_size))
+    # weight_matrix = (np.random.rand(input_size, output_size) * 0.01)
+    weight_matrix = np.random.uniform(low=-0.33, high=0.33,size=(output_size,input_size))
+  
+    bias_vector = np.ones((1, output_size))
     initialized_layers.append({
         'weights': weight_matrix,
         'biases': bias_vector,
@@ -40,13 +43,15 @@ def feed_forward(layers, inputs):
     layer['input'] = activation
 
     # Calcula a saída da camada atual: z = w * a + b, onde w são os pesos, a é a ativação da camada anterior e b são os biases
-    z = np.dot(activation, layer['weights']) + layer['biases']
+    z = np.dot(activation, layer['weights'].T) + layer['biases']
     
     # Pega a função de ativação do dicionário activation_funcs
     activation_func, _ = activation_funcs[layer['activation_func']]
     
     # Calcula o resultado da função de ativação
+    # print(f"valor de z: {z}")
     activation = activation_func(z)
+    # print(f"valor da ativação{activation}")
     # salva a operacao na layer
     layer['output'] = z
 

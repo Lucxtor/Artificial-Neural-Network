@@ -5,19 +5,23 @@ def sigmoid(z):
     return 1 / (1 + np.exp(-z))
 
 def sigmoid_derivative(a):
-    return a * (1 - a)
+    sigmoid_a = sigmoid(a)
+    return sigmoid_a * (1 - sigmoid_a)
 
 def relu(z):
     return np.maximum(0, z)
 
 def relu_derivative(a):
-    return (a > 0).astype(float)
+    # return (a > 0).astype(float)
+    return np.where(a > 0, 1, 0)
 
 def softmax(z):
-    exps = np.exp(z - np.max(z, axis=1, keepdims=True))
+    z = z - np.max(z, axis=1, keepdims=True)
+    exps = np.exp(z)
     return exps / np.sum(exps, axis=1, keepdims=True)
 
 def softmax_derivative(z):
+    # Procurar fonte sobre isso. Tentar implementar a derivada do softmax
     return 1
 
 activation_funcs = {
