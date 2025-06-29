@@ -3,22 +3,19 @@ from cost import cost_funcs
 
 import numpy as np
 
-
-def backpropagation(layers, y_pred, y_true, cost_function, learningRate):
+def backpropagation(layers, cost_derivation, learningRate):
     newWeights = []
     
     error = None
     nextLayerWeights = None
 
-    for index, layer in enumerate(reversed(layers)):
+    for layer in reversed(layers):
         _, activation_derivation = activation_funcs[layer["activation_func"]]
 
         derivation = activation_derivation(layer["output"])
 
-        if index == 0:
-            _, cost_derivation = cost_funcs[cost_function]
-
-            error = cost_derivation(y_pred, y_true) * derivation
+        if error is None:
+            error = cost_derivation * derivation
         else:
             propagated_error = np.dot(error, nextLayerWeights[:, 1:])
 
