@@ -15,16 +15,23 @@ def relu_derivative(a):
     return np.where(a > 0, 1, 0)
 
 def softmax(z):
-    z = z - np.max(z, axis=1, keepdims=True)
+    z = z - np.max(z, axis=-1, keepdims=True)
     exps = np.exp(z)
-    return exps / np.sum(exps, axis=1, keepdims=True)
+    return exps / np.sum(exps, axis=-1, keepdims=True)
 
 def softmax_derivative(z):
     # TODO: Explicar pq utiliza return 1. Tentar implementar a derivada do softmax
     return 1
 
+def identity(z):
+    return z
+
+def identity_derivative(z):
+    return np.ones_like(z)
+
 activation_funcs = {
     'sigmoid': (sigmoid, sigmoid_derivative),
     'relu':    (relu, relu_derivative),
-    'softmax': (softmax, softmax_derivative)
+    'softmax': (softmax, softmax_derivative),
+    'identity': (identity, identity_derivative)
 }

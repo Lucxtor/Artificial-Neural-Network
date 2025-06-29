@@ -2,6 +2,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 
+# TODO: trocar dataset https://www.kaggle.com/datasets/adityakadiwal/water-potability
 
 def prepareDataBinaryClassification():
   # print(data.head())
@@ -28,7 +29,7 @@ def prepareDataBinaryClassification():
   y = data.pop('species').values
 
   # Divisão dos dados em conjuntos de treino e teste na proporção de 80% para treino e 20% para teste
-  X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0, stratify=y)
+  X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
   return X_train, X_test, y_train, y_test
 
