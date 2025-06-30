@@ -20,7 +20,6 @@ def softmax(z):
     return exps / np.sum(exps, axis=-1, keepdims=True)
 
 def softmax_derivative(z):
-    # TODO: Explicar pq utiliza return 1. Tentar implementar a derivada do softmax
     return 1
 
 def identity(z):
