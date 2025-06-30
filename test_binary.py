@@ -9,13 +9,16 @@ from training import train
 
 input_size = 6
 
-layers = [{'neurons': 2, 'activation_function': 'relu'}, {'neurons': 1, 'activation_function': 'sigmoid'}]
+layers = [
+    {'neurons': 3, 'activation_function': 'relu'},
+    {'neurons': 1, 'activation_function': 'sigmoid'}
+    ]
 
 ann_layer = initialize_layers(layers, c_inputs=6)
 
 x_train, x_test, y_train, y_test = prepareDataBinaryClassification()
 
-stages = train(ann=ann_layer, epochs=100, x=x_train, y=y_train, learning_rate=0.002, cost_func_name='binary_cross_entropy')
+stages = train(ann=ann_layer, epochs=32, x=x_train, y=y_train, learning_rate=0.002, cost_func_name='binary_cross_entropy')
 
 def accuracy_func(predictions, labels):
     return int(sum(labels == predictions) / len(labels) * 100)
@@ -29,14 +32,8 @@ def evaluate(ann, x, y):
     predictions.append(prediction[0])
 
   predictions = np.round(predictions)
-  # for pred in predictions:
-  #   print(pred)
   print("result:")
   print(classification_report(y, predictions))
-  # accuracy = accuracy_func(predictions, np.round(np.array(y)))
-  # print(" accuracy: ", accuracy)
 
 evaluate(stages, x_test, y_test)
 
-
-# Lembrar de verificar se é preciso denormalizar os dados de saída
