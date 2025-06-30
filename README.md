@@ -31,12 +31,11 @@ pip install numpy pandas scikit-learn matplotlib
 - `activation.py`: funções de ativação e suas derivadas.
 - `cost.py`: funções de custo e suas derivadas.
 - `training.py`: função de treinamento da rede.
-- `prepareData/`: scripts para preparação dos dados e datasets utilizados:
-- `prepareDataRegression.py, prepareDataMultipleClassification.py, prepareDataBinaryClassification.py
+- `prepareData/`: scripts para preparação dos dados e datasets utilizados: prepareDataRegression.py, prepareDataMultipleClassification.py, prepareDataBinaryClassification.py
 - `test_regression.py`: scripts de teste para tarefas de regressão.
 - `test_multiple.py`: script de teste para classificação múltipla.
 - `test_binary.py`: script de teste para classificação binária.
-- `multiple_classification.ipynb: Notebook para classificação múltipla (execução local).
+- `multiple_classification.ipynb`: Notebook para classificação múltipla (execução local).
 - `regression.ipynb`: notebook para regressão (execução local).
 - `RNA.ipynb`: notebook completo para execução no Google Colab.
 
