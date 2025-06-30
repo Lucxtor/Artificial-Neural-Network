@@ -16,7 +16,7 @@ def binary_cross_entropy_derivative(y_true, y_pred, eps=1e-15):
     return (y_pred - y_true) / (y_pred * (1 - y_pred))
 
 def categorical_cross_entropy(y_true, y_pred):
-    return -np.sum(y_true * np.log(y_pred)) / y_pred.shape[0] # dividir por predictions.shape[0] tem o intuito de normalizar o valor da perda pelo número de amostras, tornando a perda independente do tamanho do batch
+    return -np.sum(y_true * np.log(y_pred)) / y_pred.shape[0]
 
 def categorical_cross_entropy_derivative(y_true, y_pred, eps=1e-12):
     y_pred = np.clip(y_pred, eps, 1 - eps)

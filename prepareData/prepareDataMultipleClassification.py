@@ -2,9 +2,9 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 
-# https://www.kaggle.com/code/arpit2807/multi-class-classification-for-beginners
+# https://www.kaggle.com/datasets/iabhishekofficial/mobile-price-classification
 
-""""
+"""
 Values:
 0 - low cost
 1 - medium cost

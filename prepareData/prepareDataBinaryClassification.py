@@ -2,6 +2,14 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 
+# https://www.kaggle.com/datasets/martaarroyo/palmer-penguins-for-binary-classification
+
+"""
+Values:
+0 - Adelie
+1 - Gentoo
+"""
+
 def prepareDataBinaryClassification():
   # print(data.head())
   DATA_PATH = 'prepareData/penguins_binary_classification.csv'

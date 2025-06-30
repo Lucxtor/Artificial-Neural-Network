@@ -2,8 +2,12 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 
-# Do Moodle: https://www.kaggle.com/datasets/prokshitha/home-value-insights
-# TODO: https://www.kaggle.com/datasets/nehalbirla/vehicle-dataset-from-cardekho
+# https://www.kaggle.com/datasets/prokshitha/home-value-insights
+
+""""
+Values:
+House_Price: valor da casa (target)
+"""
 
 def prepareDataRegression():
   DATA_PATH = 'prepareData/house_price_regression_dataset.csv'
@@ -25,7 +29,6 @@ def prepareDataRegression():
   X = data
 
   y = data.pop('House_Price').values
-
   
   # Divisão dos dados em conjuntos de treino e teste na proporção de 80% para treino e 20% para teste
   X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
