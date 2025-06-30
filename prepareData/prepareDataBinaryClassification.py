@@ -2,8 +2,6 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 
-# TODO: trocar dataset https://www.kaggle.com/datasets/adityakadiwal/water-potability
-
 def prepareDataBinaryClassification():
   # print(data.head())
   DATA_PATH = 'prepareData/penguins_binary_classification.csv'
